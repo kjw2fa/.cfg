@@ -2,7 +2,9 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 
-" ||||||||||||||| VUNDLE PLUGIN MANAGER |||||||||||||||
+" ################################################################################
+" ## VUNDLE PLUGIN MANAGER
+" ################################################################################
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -34,9 +36,6 @@ Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'preservim/nerdtree'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
-
-" Themes
-" Plugin 'catppuccin/vim'
 Plugin 'nordtheme/vim'
 
 call vundle#end()            " required
@@ -46,25 +45,35 @@ filetype plugin indent on    " required
 runtime macros/matchit.vim
 
 
-" ||||||||||||||| FILE NAV SETTINGS |||||||||||||||
-" --------------- fzf ---------------
+" ################################################################################
+" ## EXTENSION SETTINGS
+" ################################################################################
+
+" --------------- fzf -------------------
 nnoremap <C-p> :Files<CR>
 
 " --------------- NERDTREE ---------------
-nmap <C-j> :NERDTreeToggle<CR>
+nnoremap <C-j> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
-let NERDTreeQuitOnOpen=1
+" let NERDTreeQuitOnOpen=1
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
 
-" ||||||||||||||| THEME SETTINGS |||||||||||||||
+" --------------- Theme -------------------
 colorscheme nord
 
-" --------------- AIRLINE SETTINGS ---------------
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+" --------------- Airline ---------------
+" Used to display a status bar for vim
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1                         " Displays vim buffers
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'  " Vim buffer file and path display
+let g:airline_skip_empty_sections = 1
 
 
-" ||||||||||||||| TAB SETTINGS |||||||||||||||
+" ################################################################################
+" ## TAB SETTINGS
+" ################################################################################
 filetype plugin indent on      " Enabling filetype support provides filetype-specific indenting, syntax
                                " highlighting, omni-completion and other useful settings.
 syntax on                      " turn on syntax, required for pathogen
@@ -74,7 +83,9 @@ set shiftwidth=4               " when indenting with '>', use 4 spaces width
 set expandtab                  " on pressing tab, insert 4 spaces SPACES > TABS
 
 
-" ||||||||||||||| VARIOUS SETTINGS |||||||||||||||
+" ################################################################################
+" ## VARIOUS SETTINGS
+" ################################################################################
 set backspace=indent,eol,start " Proper backspace behavior.
 set hidden                     " Possibility to have more than one
                                " unsaved buffers.
@@ -95,13 +106,17 @@ set splitright                 " puts cursor in new window when split
 set termguicolors              " for catpuccin theme
 
 
-" ||||||||||||||| GENERAL MAPPINGS |||||||||||||||
+" ################################################################################
+" ## GENERAL MAPPINGS
+" ################################################################################
 " set leader key to space
 let mapleader=" "
 let g:camelcasemotion_key='<leader>'
 
 
-" ||||||||||||||| NORMAL MODE MAPPINGS |||||||||||||||
+" ################################################################################
+" ## NORMAL MODE MAPPINGS
+" ################################################################################
 " disable space in normal mode so it can be used as leader key
 nnoremap <Space> <Nop>
 
