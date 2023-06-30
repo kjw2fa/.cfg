@@ -1,0 +1,78 @@
+################################################################################
+# Input Readline Configuration (Kevin Wu) ####################################
+################################################################################
+
+set editing-mode vi
+
+# Full list of commands https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#Command-Line-Editing
+$if mode=vi
+
+    ######## ALL MODES ########
+    # Differentiate modes by cursor
+    set show-mode-in-prompt on
+    set vi-cmd-mode-string "\1\e[2 q\2"
+    set vi-ins-mode-string "\1\e[6 q\2"
+    set keyseq-timeout 0
+
+    # Cursor Movement
+    "\C-a": beginning-of-line
+    "\C-e": end-of-line
+    "\C-b": backward-word
+    "\C-f": forward-word
+    "\C-h": backward-char
+    "\C-l": forward-char
+
+    # Text Editing
+    "\C-u": undo
+    "\C-w": backward-kill-word
+
+    # Command History
+    "\C-p": previous-history
+    "\C-n": next-history
+
+    # Misc.
+    "\C-l": clear-screen
+    "\C-.": yank-last-arg
+
+    ######## INSERT MODE ########
+    set keymap vi-insert
+
+    # Switch to block cursor before executing a command.
+    # This ensures that opening a file in vim will use a block cursor.
+    set keymap vi-insert
+    RETURN: "\e\n"
+
+    # Switches to normal mode when "jk" is pressed in succession.
+    "jk": vi-movement-mode
+
+$endif
+
+################################################################################
+# This shows the mode at the beginning of the line, but it isn't necessary
+# since the cursor already indicates it.
+
+# The following is a little hard to understand
+# a full example omiting the wrapping \1 and \2
+#
+# \e[     (open sequence: ESC CSI)
+# 48;5;   (specifies 256 bg)
+# 46       (bg color)
+# m       (end)
+# 1;      (bold)
+# 38;5;   (specifies 256 fg)
+# 21       (fg color)
+# m       (end)
+# COMMAND (some text to display)
+# \e[     (open sequence)
+# 0       (reset)
+# m       (end)
+# \e[     (open sequence)
+# 0       (cursor type)
+# q       (end)
+
+# Configures the cmd mode display
+# set vi-cmd-mode-string "\1\e[48;5;46m\2\1\e[1;38;5;21m\2 NORMAL \1\e[0m\2 \1\e[0 q\2"
+
+# Configures the ins mode display
+# set vi-ins-mode-string "\1\e[48;5;45m\2\1\e[1;38;5;17m\2 INSERT \1\e[0m\2 \1\e[6 q\2"
+################################################################################
