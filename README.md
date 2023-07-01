@@ -166,3 +166,4 @@ brew install font-hack-nerd-font
 
 # TODO
 - [ ] Write a start up script to automate these commands
+- [ ] Figure out how to keep read me in the bare git repo
