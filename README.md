@@ -53,6 +53,21 @@ files at this stage which will need to be resolved.
 existing files will show up as untracked files. This command ignores them so
 only files from the repository are tracked.
 
+### How to update this git repository
+Use the alias "config" in place of "git" to run git commands. For example
+
+```
+git push
+```
+
+should instead be
+
+```
+config push
+```
+
+The alias "config" is set in .config/fish/config.fish
+
 ## Fish shell
 
 1. Add the fish shell /usr/local/bin/fish to /etc/shells with:
