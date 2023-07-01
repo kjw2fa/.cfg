@@ -1,5 +1,5 @@
 if status is-interactive
-    alias config='/usr/bin/git --git-dir=$HOME/.cfg/.git/ --work-tree=$HOME'
+    alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
     # fish_vi_mode_prompt
     # Emulates vim's cursor shape behavior
