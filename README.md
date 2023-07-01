@@ -1,15 +1,14 @@
-################################################################################
-## VUNDLE PLUGIN MANAGER
-################################################################################
+# VUNDLE PLUGIN MANAGER
 
-Installation
+## Installation
+```
 git clone --bare https://github.com/kjw2fa/.cfg.git $HOME/.cfg
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 config checkout
 config config --local status.showUntrackedFiles no
+```
 
-
-Explanation of steps
+## Explanation of steps
 1. Clone the repository
 2. Create an alias "config" that can be used for git commands on the repository
 3. Checkout the files from the repository. There may be conflicts with existing
