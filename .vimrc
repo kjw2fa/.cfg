@@ -1,17 +1,21 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-
-" ################################################################################
-" ## VUNDLE PLUGIN MANAGER
-" ################################################################################
+" ##############################################################################
+" VUNDLE PLUGIN MANAGER
+" ##############################################################################
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+" ------------------------------------------------------------------------------
+" INSTRUCTIONS
+" ------------------------------------------------------------------------------
 " To use Vundle to manage plugins on a new machine
 " 1. Install Vundle
+"   1a. git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 " 2. Run the ex command :PluginInstall to install all plugins
+" 3. Use the :so % vim ex command to source .vimrc
 "
 " Brief help
 " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
@@ -45,14 +49,18 @@ filetype plugin indent on    " required
 runtime macros/matchit.vim
 
 
-" ################################################################################
-" ## EXTENSION SETTINGS
-" ################################################################################
+" ##############################################################################
+" EXTENSION SETTINGS
+" ##############################################################################
 
-" --------------- fzf -------------------
+" ------------------------------------------------------------------------------
+" fzf
+" ------------------------------------------------------------------------------
 nnoremap <C-p> :Files<CR>
 
-" --------------- NERDTREE ---------------
+" ------------------------------------------------------------------------------
+" NERDTREE
+" ------------------------------------------------------------------------------
 nnoremap <C-j> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 " let NERDTreeQuitOnOpen=1
@@ -60,10 +68,14 @@ let NERDTreeShowHidden=1
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
 
-" --------------- Theme -------------------
+" ------------------------------------------------------------------------------
+" Theme
+" ------------------------------------------------------------------------------
 colorscheme nord
 
-" --------------- Airline ---------------
+" ------------------------------------------------------------------------------
+" Airline
+" ------------------------------------------------------------------------------
 " Used to display a status bar for vim
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1                         " Displays vim buffers
@@ -71,9 +83,9 @@ let g:airline#extensions#tabline#formatter = 'unique_tail_improved'  " Vim buffe
 let g:airline_skip_empty_sections = 1
 
 
-" ################################################################################
-" ## TAB SETTINGS
-" ################################################################################
+" ##############################################################################
+" TAB SETTINGS
+" ##############################################################################
 filetype plugin indent on      " Enabling filetype support provides filetype-specific indenting, syntax
                                " highlighting, omni-completion and other useful settings.
 syntax on                      " turn on syntax, required for pathogen
@@ -83,9 +95,9 @@ set shiftwidth=4               " when indenting with '>', use 4 spaces width
 set expandtab                  " on pressing tab, insert 4 spaces SPACES > TABS
 
 
-" ################################################################################
-" ## VARIOUS SETTINGS
-" ################################################################################
+" ##############################################################################
+" VARIOUS SETTINGS
+" ##############################################################################
 set backspace=indent,eol,start " Proper backspace behavior.
 set hidden                     " Possibility to have more than one
                                " unsaved buffers.
@@ -104,19 +116,36 @@ set nowrap                     " Don't wrap lines
 set showcmd                    " Show the current typed command
 set splitright                 " puts cursor in new window when split
 set termguicolors              " for catpuccin theme
+set textwidth=80               " Starts new line after 80 characters
 
+" Use a line cursor within insert mode and a block cursor everywhere else.
+"
+" Using iTerm2? Go-to preferences / profile / colors and disable the smart bar
+" cursor color. Then pick a cursor and highlight color that matches your theme.
+" That will ensure your cursor is always visible within insert mode.
+"
+" Reference chart of values:
+"   Ps = 0  -> blinking block.
+"   Ps = 1  -> blinking block (default).
+"   Ps = 2  -> steady block.
+"   Ps = 3  -> blinking underline.
+"   Ps = 4  -> steady underline.
+"   Ps = 5  -> blinking bar (xterm).
+"   Ps = 6  -> steady bar (xterm).
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
 
-" ################################################################################
-" ## GENERAL MAPPINGS
-" ################################################################################
+" ##############################################################################
+" GENERAL MAPPINGS
+" ##############################################################################
 " set leader key to space
 let mapleader=" "
 let g:camelcasemotion_key='<leader>'
 
 
-" ################################################################################
-" ## NORMAL MODE MAPPINGS
-" ################################################################################
+" ##############################################################################
+" NORMAL MODE MAPPINGS
+" ##############################################################################
 " disable space in normal mode so it can be used as leader key
 nnoremap <Space> <Nop>
 
