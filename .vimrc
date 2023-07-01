@@ -117,6 +117,7 @@ set showcmd                    " Show the current typed command
 set splitright                 " puts cursor in new window when split
 set termguicolors              " for catpuccin theme
 set textwidth=80               " Starts new line after 80 characters
+set clipboard=unnamed          " Sets clipboard as default register
 
 " Use a line cursor within insert mode and a block cursor everywhere else.
 "
