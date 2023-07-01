@@ -1,4 +1,10 @@
 # What is this for?
+![Terminal before
+configurations](~/Documents/assets/images/terminal_without_configurations.png)
+
+![Terminal after
+configurations](~/Documents/assets/images/terminal_with_configurations.png)
+
 This repository contains my configurations for:
 - vim
 - tmux
