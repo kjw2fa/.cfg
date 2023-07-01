@@ -17,15 +17,15 @@ symlinking is required to get this up and running.
 git version
 ```
 
-2. If your device is using MacOS, download
-[homebrew](https://docs.brew.sh/Installation) which is a package manager
-2a. Install git with
+2. Install git
 
-```
-brew install git
-```
-
-3. If your device is running a different OS look up how to install
+   - If your device is using MacOS
+      - download [homebrew](https://docs.brew.sh/Installation) which is a package manager
+      - Install git with
+      ```
+      brew install git
+      ```
+   - If your device is running a different OS look up how to install
    [git](https://github.com/git-guides/install-git)
 
 ## Installing this repository
@@ -36,7 +36,7 @@ This installation process is from
 [here](https://www.ackama.com/what-we-think/the-best-way-to-store-your-dotfiles-a-bare-git-repository-explained/)
 and [here](https://www.atlassian.com/git/tutorials/dotfiles).
 
-## Commands for installation
+### Commands for installation
 ```
 git clone --bare https://github.com/kjw2fa/.cfg.git $HOME/.cfg
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
@@ -44,7 +44,7 @@ config checkout
 config config --local status.showUntrackedFiles no
 ```
 
-## Explanation of steps
+### Explanation of steps
 1. Clone the repository
 2. Create an alias "config" that can be used for git commands on the repository
 3. Checkout the files from the repository. There may be conflicts with existing
@@ -55,15 +55,13 @@ only files from the repository are tracked.
 
 ## Fish shell
 
-The fish shell should be downloaded, but it may not be your default shell.
-
-Add the fish shell /usr/local/bin/fish to /etc/shells with:
+1. Add the fish shell /usr/local/bin/fish to /etc/shells with:
 
 ```
 echo /usr/local/bin/fish | sudo tee -a /etc/shells
 ```
 
-Change your default shell to fish with:
+2. Change your default shell to fish with:
 
 ```
 chsh -s /usr/local/bin/fish
@@ -100,27 +98,27 @@ After installing the repository, you can download the required plugins by:
  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
-2. Run the command to download the plugins
-```
-cd ~/.tmux/plugins/tpm/scripts && ./install_plugins.sh
-```
+2. Download the plugins
+   - Run the command to download the plugins
+   ```
+   cd ~/.tmux/plugins/tpm/scripts && ./install_plugins.sh
+   ```
 
+   - Alternatively, download the plugs from .tmux.conf
+      - open [.tmux.conf](.tmux.conf) which should be in your home folder.
+      ```
+      vim ~/.tmux.conf
+      ```
+      - move your cursor to the plugins, and use the tmux prefix + I. The tmux prefix
+      could be ctrl b or ctrl space if you have already sourced the tmux file.
 
-2a. Alternatively, open [.tmux.conf](.tmux.conf) which should be in your home folder.
-
-```
-vim ~/.tmux.conf
-```
-
-move your cursor to the plugins, and use the tmux prefix + I. The tmux prefix
-could be ctrl b or ctrl space if you have already sourced the tmux file.
 3. Source the tmux file with
 
 ```
 tmux source ~.tmux.conf
 ```
 
-Not tmux should mostly be set up, but there may be some issues with the themes.
+Now tmux should mostly be set up, but there may be some issues with the themes.
 This can be resolved in the Terminal Themes and Fonts section.
 
 ## Terminal Themes and Fonts
@@ -150,3 +148,6 @@ brew install font-hack-nerd-font
 ```
 
 3. Select the new font in Settings > Profiles > Text > Fonts
+
+# TODO
+- [ ] Write a start up script to automate these commands
