@@ -1,5 +1,6 @@
 if status is-interactive
     alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+    alias gpaste='/google/src/head/depot/eng/tools/pastebin'
 
     # fish_vi_mode_prompt
     # Emulates vim's cursor shape behavior
