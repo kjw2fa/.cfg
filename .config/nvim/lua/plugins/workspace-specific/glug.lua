@@ -18,6 +18,7 @@ return {
   goog("core"),
   goog("glaive"),
   goog("google-filetypes"),
+  goog("ft-dart"),
   goog("ft-cpp"),
   goog("ft-go"),
   goog("ft-java"),

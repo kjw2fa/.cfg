@@ -1,3 +1,3 @@
 return {
-  "vim-scripts/ReplaceWithRegister",
+  "inkarkat/vim-ReplaceWithRegister",
 }
