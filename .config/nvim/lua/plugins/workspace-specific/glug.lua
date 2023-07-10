@@ -7,6 +7,8 @@ local function goog(plugin, config)
   }
 end
 
+local keymap = vim.keymap.set
+
 return {
   {
     name = "maktaba",
@@ -18,7 +20,6 @@ return {
   goog("core"),
   goog("glaive"),
   goog("google-filetypes"),
-  goog("ft-dart"),
   goog("ft-cpp"),
   goog("ft-go"),
   goog("ft-java"),
@@ -28,11 +29,17 @@ return {
 
   goog("ultisnips-google"),
   goog("autogen"),
-  goog("blaze"),
+  goog("blaze", function()
+    -- vimscript autocommands use the # sytax. vim.fn must use vim.fn["autocommand#function"] syntax for them. (see :h vim.fn)
+    keymap("n", "<leader>t", vim.fn["blaze#TestCurrentFile"], { desc = "Test current file with blaze" })
+    keymap("n", "<leader>gts", "<cmd>BlazeGoToSponge<cr>", { desc = "Go to sponge" })
+    -- This doesn't seem to work. It just tests the current file
+    keymap("n", "<leader>gtm", vim.fn["blaze#TestCurrentMethod"], { desc = "Test current method with blaze" })
+  end),
   goog("codefmt"),
   goog("codefmt-google"),
   goog("googlestyle"),
-  -- goog("relatedfiles", function()
-  --   nmap("<leader>r", ":RelatedFilesWindow<cr>")
-  -- end),
+  goog("relatedfiles", function()
+    keymap("n", "<leader>gr", ":RelatedFilesWindow<cr>", { desc = "Related files" })
+  end),
 }

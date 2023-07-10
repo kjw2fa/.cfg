@@ -57,6 +57,7 @@ cmp.setup({
 
   -- other config lines from cmp-nvim
   sources = cmp.config.sources({
+    { name = "buganizer" },
     { name = "nvim_lsp" },
     { name = "luasnip" },
     { name = "path" },
