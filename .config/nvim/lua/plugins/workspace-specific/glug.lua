@@ -30,6 +30,9 @@ return {
   goog("ultisnips-google"),
   goog("autogen"),
   goog("blaze", function()
+    -- vim.cmd("maktaba#Plugin('blaze').Flag('execution_mode', 'async')")
+    vim.fn["glug#Plugin('blaze').Flag"]("execution_mode", "async")
+
     -- vimscript autocommands use the # sytax. vim.fn must use vim.fn["autocommand#function"] syntax for them. (see :h vim.fn)
     keymap("n", "<leader>t", vim.fn["blaze#TestCurrentFile"], { desc = "Test current file with blaze" })
     keymap("n", "<leader>gts", "<cmd>BlazeGoToSponge<cr>", { desc = "Go to sponge" })
